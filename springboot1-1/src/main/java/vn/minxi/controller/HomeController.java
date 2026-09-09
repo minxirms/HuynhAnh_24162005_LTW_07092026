@@ -1,0 +1,21 @@
+package vn.minxi.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import vn.minxi.service.ICategoryService;
+
+@Controller
+public class HomeController {
+
+	@Autowired
+	private ICategoryService categoryService;
+
+	@GetMapping("/")
+	public String home(Model model) {
+		// Lấy tất cả dữ liệu từ DB truyền ra trang Home
+		model.addAttribute("categories", categoryService.findAll());
+		return "home"; // Trả về file home.jsp
+	}
+}
