@@ -14,8 +14,8 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		// Lấy tất cả dữ liệu từ DB truyền ra trang Home
+
 		model.addAttribute("categories", categoryService.findAll());
-		return "home"; // Trả về file home.jsp
+		return "home";
 	}
 }

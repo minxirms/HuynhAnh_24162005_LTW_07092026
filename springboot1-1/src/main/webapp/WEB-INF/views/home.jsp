@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trang Chủ - MINXI FlOWER STORE</title>
+<title>Trang Chủ - MINXI FLOWER STORE</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -38,14 +39,18 @@
 		class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
 		<div class="container">
 			<a class="navbar-brand fw-bold text-warning" href="/"><i
-				class="fa-solid fa-store me-2"></i>MINXI STORE</a>
+				class="fa-solid fa-store me-2"></i>MINXI FLOWER STORE</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item"><a class="nav-link active" href="/"><i
 							class="fa-solid fa-house me-1"></i> Trang chủ</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/admin/categories"><i
-							class="fa-solid fa-list-check me-1"></i> Quản lý CRUD</a></li>
+							class="fa-solid fa-list-check me-1"></i> Quản lý Danh mục</a></li>
+					<!-- Đã thêm nút Quản lý Người dùng -->
+					<li class="nav-item"><a class="nav-link"
+						href="/admin/users"><i
+							class="fa-solid fa-users me-1"></i> Quản lý Người dùng</a></li>
 				</ul>
 			</div>
 		</div>
@@ -54,8 +59,8 @@
 	<!-- Banner -->
 	<div class="bg-primary text-white text-center py-4 mb-4 shadow-sm">
 		<div class="container">
-			<h1 class="fw-bold">Danh Sách Sản Phẩm Hiện Có</h1>
-			<p class="lead mb-0">Hiển thị dữ liệu thực tế từ Database</p>
+			<h1 class="fw-bold">Sản Phẩm</h1>
+			<p class="lead mb-0">A special gift for your dearest</p>
 		</div>
 	</div>
 
@@ -74,8 +79,11 @@
 							<p class="card-text text-muted flex-grow-1 small">${category.description}</p>
 							<div
 								class="d-flex justify-content-between align-items-center mt-3">
-								<span class="fs-5 fw-bold text-danger">${category.price}
-									VNĐ</span> <a href="/admin/categories/edit/${category.id}"
+								<!-- Đã định dạng đơn vị tiền tệ không có .00 -->
+								<span class="fs-5 fw-bold text-danger">
+									<fmt:formatNumber value="${category.price}" type="number" maxFractionDigits="0" /> VNĐ
+								</span> 
+								<a href="/admin/categories/edit/${category.id}"
 									class="btn btn-sm btn-outline-primary"> <i
 									class="fa-solid fa-pen-to-square"></i> Sửa
 								</a>

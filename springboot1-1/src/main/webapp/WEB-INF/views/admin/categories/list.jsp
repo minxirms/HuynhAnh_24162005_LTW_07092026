@@ -14,27 +14,45 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-light">
-	<!-- Navbar -->
+	<!-- Navbar Trang Chủ -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
 		<div class="container">
 			<a class="navbar-brand fw-bold text-warning" href="/">MINXI
 				FLOWER STORE</a>
 			<div class="navbar-nav">
-				<a class="nav-link" href="/">Trang chủ</a> <a
-					class="nav-link active" href="/admin/categories">Quản lý</a>
+				<a class="nav-link" href="/">Trang chủ</a> 
+				<a class="nav-link active" href="/admin/categories">Quản lý Danh Mục</a>
+				<a class="nav-link" href="/admin/users">Quản lý Người Dùng</a>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container">
+		<!-- Header -->
 		<div class="d-flex justify-content-between align-items-center mb-3">
 			<h3 class="fw-bold text-secondary">
 				<i class="fa-solid fa-list me-2"></i>Bảng Quản Lý Danh Mục
 			</h3>
 			<a href="/admin/categories/add" class="btn btn-success"><i
-				class="fa-solid fa-plus me-1"></i> Thêm Mới Category</a>
+				class="fa-solid fa-plus me-1"></i> Thêm Mới</a>
 		</div>
 
+		<!-- Form Tìm Kiếm Category -->
+		<div class="card p-3 mb-4 shadow-sm border-0">
+			<form action="/admin/categories" method="get" class="row g-2">
+				<div class="col-md-10">
+					<input type="text" name="keyword" value="${keyword}" class="form-control" placeholder="Nhập tên sản phẩm cần tìm...">
+				</div>
+				<div class="col-md-2 d-flex gap-2">
+					<button type="submit" class="btn btn-success w-100"><i class="fa-solid fa-magnifying-glass"></i> Tìm</button>
+					<c:if test="${not empty keyword}">
+						<a href="/admin/categories" class="btn btn-outline-secondary"><i class="fa-solid fa-xmark"></i></a>
+					</c:if>
+				</div>
+			</form>
+		</div>
+
+		<!-- Bảng Dữ Liệu -->
 		<div class="card shadow-sm border-0">
 			<div class="card-body p-0">
 				<table class="table table-hover align-middle mb-0">
@@ -59,7 +77,6 @@
 									onerror="this.src='https://via.placeholder.com/50';"></td>
 								<td class="fw-bold text-primary">${item.name}</td>
 
-
 								<td class="text-danger fw-bold"><fmt:formatNumber
 										value="${item.price}" type="number" maxFractionDigits="0" />
 									VNĐ</td>
@@ -78,8 +95,7 @@
 						</c:forEach>
 						<c:if test="${empty categories}">
 							<tr>
-								<td colspan="6" class="text-center py-4 text-muted">Chưa có
-									danh mục nào trong Database.</td>
+								<td colspan="6" class="text-center py-4 text-muted">Không tìm thấy danh mục nào.</td>
 							</tr>
 						</c:if>
 					</tbody>

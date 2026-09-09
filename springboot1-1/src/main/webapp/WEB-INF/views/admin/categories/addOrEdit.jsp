@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
 		<div class="container">
 			<a class="navbar-brand fw-bold text-warning" href="/"><i
-				class="fa-solid fa-store me-2"></i>MINXI STORE</a>
+				class="fa-solid fa-store me-2"></i>MINXI FLOWER STORE</a>
 			<div class="navbar-nav">
 				<a class="nav-link" href="/">Trang chủ</a> <a class="nav-link"
 					href="/admin/categories">Quản lý CRUD</a>

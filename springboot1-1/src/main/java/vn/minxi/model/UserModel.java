@@ -4,36 +4,73 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserModel implements Serializable {
+public class UserModel {
 
-	private static final long serialVersionUID = 1L;
+    private Long id;
+    private String username;
+    private String password;
+    private String fullname;
+    private String email;
+    private String role;
+    private Boolean isEdit = false;
 
-	private Long id;
-	private String username;
-	private String password;
-	private String fullname;
-	private String email;
-	private String role;
+    // Getter & Setter bắt buộc cho id
+    public Long getId() {
+        return id;
+    }
 
-	private Boolean isEdit = false;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Object getIsEdit() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setIsEdit(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setRole(String string) {
-		// TODO Auto-generated method stub
-		
-	}
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Boolean getIsEdit() {
+        return isEdit;
+    }
+
+    public void setIsEdit(Boolean isEdit) {
+        this.isEdit = isEdit;
+    }
 }

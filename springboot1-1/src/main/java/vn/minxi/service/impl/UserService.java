@@ -12,35 +12,36 @@ import java.util.Optional;
 @Service
 public class UserService implements IUserService {
 
-    @Autowired
-    IUserRepository userRepository;
+	@Autowired
+	private IUserRepository userRepository;
 
-    @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
+	@Override
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
 
-    @Override
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
+	@Override
+	public List<User> searchByName(String keyword) {
+		if (keyword != null && !keyword.trim().isEmpty()) {
+			return userRepository
+					.findByUsernameContainingIgnoreCaseOrFullnameContainingIgnoreCaseOrEmailContainingIgnoreCase(
+							keyword.trim(), keyword.trim(), keyword.trim());
+		}
+		return findAll();
+	}
 
-    @Override
-    public User save(User user) {
-        return userRepository.save(user);
-    }
+	@Override
+	public Optional<User> findById(Long id) {
+		return userRepository.findById(id);
+	}
 
-    @Override
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
-    }
+	@Override
+	public User save(User entity) {
+		return userRepository.save(entity);
+	}
 
-    @Override
-    public List<User> searchByKeyword(String keyword) {
-        if (keyword != null && !keyword.trim().isEmpty()) {
-            String k = keyword.trim();
-            return userRepository.findByUsernameContainingIgnoreCaseOrFullnameContainingIgnoreCase(k, k);
-        }
-        return findAll();
-    }
+	@Override
+	public void deleteById(Long id) {
+		userRepository.deleteById(id);
+	}
 }
